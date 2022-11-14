@@ -1,9 +1,5 @@
 import React, { FC, useState } from "react";
-import { Dayjs } from "dayjs";
 import TextField from "@mui/material/TextField";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 interface DateInput {
   label: string;
@@ -26,9 +22,6 @@ const DateInput: FC<DateInput> = ({ label, id }) => {
       <TextField
         id="date"
         type="date"
-        InputLabelProps={{
-          shrink: true,
-        }}
         sx={{
           color: "#fff",
           "& .MuiInputBase-root": {
