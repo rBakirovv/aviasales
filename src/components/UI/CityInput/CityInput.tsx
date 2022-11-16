@@ -1,21 +1,31 @@
 import { FC } from "react";
 import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import { observer } from "mobx-react-lite";
 
 interface ICityInputProps {
-  label: string,
-  placeholder: string,
-  id: string
+  label: string;
+  placeholder: string;
+  id: string;
+  city: string;
+  setCity: (e: string) => void;
 }
 
-const CityInput: FC<ICityInputProps> = ({ label, placeholder, id}) => {
+const CityInput: FC<ICityInputProps> = observer((props) => {
+  const { label, placeholder, id, city, setCity } = props;
+
+  function onCityChange(e: React.SyntheticEvent) {
+    const element = e.target as HTMLInputElement;
+
+    setCity(element.value);
+  }
+
   return (
     <div className="city-input">
       <label className="city-input__label" htmlFor={`input-${id}`}>
         {label}
       </label>
       <FormControl
-        id={id}
         color="primary"
         sx={{
           color: "#fff",
@@ -25,7 +35,7 @@ const CityInput: FC<ICityInputProps> = ({ label, placeholder, id}) => {
             borderRadius: "10px",
             width: "210px",
             height: "56px",
-            boxSizing: "border-box"
+            boxSizing: "border-box",
           },
           "& .MuiInputBase-root": {
             border: "none",
@@ -33,11 +43,16 @@ const CityInput: FC<ICityInputProps> = ({ label, placeholder, id}) => {
             backgroundColor: "transparent",
           },
           ".css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
-            fontWeight: '700'
-          }
+            fontWeight: "700",
+          },
         }}
       >
-        <OutlinedInput placeholder={placeholder} />
+        <OutlinedInput
+          id={id}
+          value={city}
+          onChange={onCityChange}
+          placeholder={placeholder}
+        />
       </FormControl>
       <style>
         {`
@@ -56,6 +71,6 @@ const CityInput: FC<ICityInputProps> = ({ label, placeholder, id}) => {
       </style>
     </div>
   );
-};
+});
 
 export default CityInput;

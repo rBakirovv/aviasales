@@ -1,18 +1,31 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
+import { observer } from "mobx-react-lite";
 
 interface DateInput {
   label: string;
   id: string;
+  date: string;
+  setDate: (e: string) => void;
 }
 
-const DateInput: FC<DateInput> = ({ label, id }) => {
+const DateInput: FC<DateInput> = observer((props) => {
+  const { label, id, date, setDate } = props;
 
-  const [color, setColor] = useState<string>('silver');
+  const [color, setColor] = useState<string>("silver");
 
-  function onDateChange() {
-    setColor('#000');
-  };
+  useEffect(() => {
+    if (date !== '') {
+      setColor("#000");
+    } else {
+      setColor("silver");
+    };
+  });
+
+  function onDateChange(e: React.SyntheticEvent) {
+    const element = e.target as HTMLInputElement;
+    setDate(element.value);
+  }
 
   return (
     <div className="date-input">
@@ -33,8 +46,9 @@ const DateInput: FC<DateInput> = ({ label, id }) => {
             boxSizing: "border-box",
             color: `${color}`,
             fontWeight: "500",
-          }
+          },
         }}
+        value={date}
         onChange={onDateChange}
       />
       <style>
@@ -54,6 +68,6 @@ const DateInput: FC<DateInput> = ({ label, id }) => {
       </style>
     </div>
   );
-};
+});
 
 export default DateInput;

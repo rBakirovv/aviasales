@@ -238,3 +238,12 @@
   color: #232323;
   padding: 0.625rem 1rem;
 }
+
+.result__ticket-not-found {
+  font-size: 2rem;
+  line-height: 3rem;
+  font-weight: 500;
+  text-align: center;
+  color: silver;
+  margin: 0;
+}
