@@ -1,5 +1,5 @@
 import { FC } from "react";
-import FormControl, { useFormControl } from "@mui/material/FormControl";
+import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
 
 interface ICityInputProps {
@@ -49,8 +49,8 @@ const CityInput: FC<ICityInputProps> = ({ label, placeholder, id}) => {
 
           .city-input__label {
             font-weight: 400;
-            font-size: 11px;
-            line-height: 13px;
+            font-size: 0.75rem;
+            line-height: 0.8rem;
           }
         `}
       </style>

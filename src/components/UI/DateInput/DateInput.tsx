@@ -47,8 +47,8 @@ const DateInput: FC<DateInput> = ({ label, id }) => {
 
           .date-input__label {
             font-weight: 400;
-            font-size: 11px;
-            line-height: 13px;
+            font-size: 0.75rem;
+            line-height: 0.8rem;
           }
         `}
       </style>
