@@ -76,348 +76,334 @@ const Result = () => {
         <>
           <div className={styles["result__container"]}>
             <div className={styles["result__tickets-container"]}>
-              {isBrowser &&
-                filteredFlightFrom.slice(indexOfFlightFrom).map((item) => {
-                  return (
+              {isBrowser && (
+                <div className={styles["result__ticket-container"]}>
+                  <div className={styles["result__ticket-main-container"]}>
                     <div
-                      key={item.id}
-                      className={styles["result__ticket-container"]}
+                      className={
+                        styles["result__ticket-avia-company-container"]
+                      }
                     >
-                      <div className={styles["result__ticket-main-container"]}>
-                        <div
+                      <div
+                        className={
+                          styles["result__ticket-avia-refund-container"]
+                        }
+                      >
+                        <p className={styles["result__ticket-avia-refund"]}>
+                          Невозвратный
+                        </p>
+                      </div>
+                      <div className={styles["result__ticket-avia-company"]}>
+                        <img
                           className={
-                            styles["result__ticket-avia-company-container"]
+                            styles["result__ticket-avia-company-image"]
                           }
+                          src="./images/s7.png"
+                          alt="Авиокомпания S7"
+                        />
+                        <p
+                          className={styles["result__ticket-avia-company-name"]}
                         >
-                          <div
-                            className={
-                              styles["result__ticket-avia-refund-container"]
+                          S7 Airlines
+                        </p>
+                      </div>
+                    </div>
+                    <div className={`${styles["result__info"]}`}>
+                      <div className={styles["result__info-container"]}>
+                        <div
+                          className={styles["result__ticket-time-container"]}
+                        >
+                          <p className={styles["result__ticket-time"]}>
+                            {
+                              filteredFlightFrom[indexOfFlightFrom]
+                                .startFlightTime
                             }
-                          >
-                            <p className={styles["result__ticket-avia-refund"]}>
-                              Невозвратный
-                            </p>
-                          </div>
-                          <div
-                            className={styles["result__ticket-avia-company"]}
-                          >
-                            <img
-                              className={
-                                styles["result__ticket-avia-company-image"]
-                              }
-                              src="./images/s7.png"
-                              alt="Авиокомпания S7"
-                            />
-                            <p
-                              className={
-                                styles["result__ticket-avia-company-name"]
-                              }
+                          </p>
+                          <p className={styles["result__ticket-date"]}>
+                            <span
+                              className={styles["result__ticket-date-span"]}
                             >
-                              S7 Airlines
-                            </p>
-                          </div>
+                              {filteredFlightFrom[indexOfFlightFrom].fromCity}
+                            </span>
+                            <br />
+                            {
+                              filteredFlightFrom[indexOfFlightFrom]
+                                .startFlightDate
+                            }
+                          </p>
                         </div>
-                        <div className={`${styles["result__info"]}`}>
-                          <div className={styles["result__info-container"]}>
-                            <div
-                              className={
-                                styles["result__ticket-time-container"]
-                              }
-                            >
-                              <p className={styles["result__ticket-time"]}>
-                                {item.startFlightTime}
-                              </p>
-                              <p className={styles["result__ticket-date"]}>
-                                <span
-                                  className={styles["result__ticket-date-span"]}
-                                >
-                                  {item.fromCity}
-                                </span>
-                                <br />
-                                {item.startFlightDate}
-                              </p>
-                            </div>
-                            <div
-                              className={
-                                styles["result__ticket-line-main-container"]
-                              }
-                            >
-                              <div
-                                className={
-                                  styles["result__ticket-line-container"]
-                                }
-                              >
-                                <div
-                                  className={styles["result__ticket-airport"]}
-                                >
-                                  <p
-                                    className={
-                                      styles["result__ticket-airport-name"]
-                                    }
-                                  >
-                                    {item.airportFromName}
-                                  </p>
-                                  <div
-                                    className={
-                                      styles["result__ticket-airport-dot"]
-                                    }
-                                  ></div>
-                                </div>
-                                <div
-                                  className={
-                                    styles["result__ticket-airport-line"]
-                                  }
-                                ></div>
-                                <div
-                                  className={styles["result__ticket-airport"]}
-                                >
-                                  <p
-                                    className={
-                                      styles["result__ticket-airport-name"]
-                                    }
-                                  >
-                                    {item.airportToName}
-                                  </p>
-                                  <div
-                                    className={
-                                      styles["result__ticket-airport-dot"]
-                                    }
-                                  ></div>
-                                </div>
-                              </div>
-                              <p
-                                className={styles["result__ticket-time-on-way"]}
-                              >
-                                В пути {Math.round(item.flightTime / 60)} ч{" "}
-                                {item.flightTime % 60 > 0 &&
-                                  `${item.flightTime % 60} мин`}
-                              </p>
-                            </div>
-                            <div
-                              className={
-                                styles["result__ticket-time-container"]
-                              }
-                            >
-                              <p className={styles["result__ticket-time"]}>
-                                {item.finishFlightTime}
-                              </p>
-                              <p className={styles["result__ticket-date"]}>
-                                <span
-                                  className={styles["result__ticket-date-span"]}
-                                >
-                                  {item.toCity}
-                                </span>
-                                <br />
-                                {item.finishFlightDate}
-                              </p>
-                            </div>
-                            <img
-                              className={styles["result__ticket-luggage-image"]}
-                              src="./images/luggage.svg"
-                              alt="Багаж"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              {isBrowser &&
-                dateTo !== "" &&
-                filteredFlightTo &&
-                filteredFlightTo.map((item) => {
-                  return (
-                    <div
-                      key={item.id}
-                      className={`${styles["result__ticket-container"]} ${styles["result__ticket-container_comeback"]}`}
-                    >
-                      <div className={styles["result__ticket-main-container"]}>
                         <div
                           className={
-                            styles["result__ticket-avia-company-container"]
+                            styles["result__ticket-line-main-container"]
                           }
                         >
                           <div
-                            className={`${styles["result__ticket-avia-refund-container"]} ${styles["result__ticket-avia-refund-container_comeback"]}`}
+                            className={styles["result__ticket-line-container"]}
                           >
-                            <p className={styles["result__ticket-avia-refund"]}>
-                              Невозвратный
-                            </p>
-                          </div>
-                          <div
-                            className={styles["result__ticket-avia-company"]}
-                          >
-                            <img
-                              className={
-                                styles["result__ticket-avia-company-image"]
-                              }
-                              src="./images/s7.png"
-                              alt="Авиокомпания S7"
-                            />
-                            <p
-                              className={
-                                styles["result__ticket-avia-company-name"]
-                              }
-                            >
-                              S7 Airlines
-                            </p>
-                          </div>
-                        </div>
-                        <div
-                          className={`${styles["result__info"]} ${
-                            filteredFlightTo &&
-                            filteredFlightTo.length > 1 &&
-                            styles["result__info_options"]
-                          }`}
-                        >
-                          <div className={styles["result__info-container"]}>
-                            <div
-                              className={
-                                styles["result__ticket-time-container"]
-                              }
-                            >
-                              <p className={styles["result__ticket-time"]}>
-                                {item.startFlightTime}
-                              </p>
-                              <p className={styles["result__ticket-date"]}>
-                                <span
-                                  className={styles["result__ticket-date-span"]}
-                                >
-                                  {item.fromCity}
-                                </span>
-                                <br />
-                                {item.startFlightDate}
-                              </p>
-                            </div>
-                            <div
-                              className={
-                                styles["result__ticket-line-main-container"]
-                              }
-                            >
-                              <div
+                            <div className={styles["result__ticket-airport"]}>
+                              <p
                                 className={
-                                  styles["result__ticket-line-container"]
+                                  styles["result__ticket-airport-name"]
                                 }
                               >
-                                <div
-                                  className={styles["result__ticket-airport"]}
-                                >
-                                  <p
-                                    className={
-                                      styles["result__ticket-airport-name"]
-                                    }
-                                  >
-                                    {item.airportFromName}
-                                  </p>
-                                  <div
-                                    className={
-                                      styles["result__ticket-airport-dot"]
-                                    }
-                                  ></div>
-                                </div>
-                                <div
-                                  className={
-                                    styles["result__ticket-airport-line"]
-                                  }
-                                ></div>
-                                <div
-                                  className={styles["result__ticket-airport"]}
-                                >
-                                  <p
-                                    className={
-                                      styles["result__ticket-airport-name"]
-                                    }
-                                  >
-                                    {item.airportToName}
-                                  </p>
-                                  <div
-                                    className={
-                                      styles["result__ticket-airport-dot"]
-                                    }
-                                  ></div>
-                                </div>
-                              </div>
-                              <p
-                                className={styles["result__ticket-time-on-way"]}
-                              >
-                                В пути {Math.round(item.flightTime / 60)} ч{" "}
-                                {item.flightTime % 60 > 0 &&
-                                  `${item.flightTime % 60} мин`}
+                                {
+                                  filteredFlightFrom[indexOfFlightFrom]
+                                    .airportFromName
+                                }
                               </p>
+                              <div
+                                className={styles["result__ticket-airport-dot"]}
+                              ></div>
                             </div>
                             <div
-                              className={
-                                styles["result__ticket-time-container"]
-                              }
-                            >
-                              <p className={styles["result__ticket-time"]}>
-                                {item.finishFlightTime}
+                              className={styles["result__ticket-airport-line"]}
+                            ></div>
+                            <div className={styles["result__ticket-airport"]}>
+                              <p
+                                className={
+                                  styles["result__ticket-airport-name"]
+                                }
+                              >
+                                {
+                                  filteredFlightFrom[indexOfFlightFrom]
+                                    .airportToName
+                                }
                               </p>
-                              <p className={styles["result__ticket-date"]}>
-                                <span
-                                  className={styles["result__ticket-date-span"]}
-                                >
-                                  {item.toCity}
-                                </span>
-                                <br />
-                                {item.finishFlightDate}
-                              </p>
+                              <div
+                                className={styles["result__ticket-airport-dot"]}
+                              ></div>
                             </div>
-                            <img
-                              className={styles["result__ticket-luggage-image"]}
-                              src="./images/luggage.svg"
-                              alt="Багаж"
-                            />
                           </div>
-                          {filteredFlightTo && filteredFlightTo.length > 1 && (
-                            <ul
-                              className={
-                                styles["result__ticket-options-container"]
-                              }
-                            >
-                              <li
-                                className={`${styles["result__ticket-option"]} ${styles["result__ticket-option_active"]}`}
-                              >
-                                <span
-                                  className={
-                                    styles["result__ticket-option-span"]
-                                  }
-                                >
-                                  09:20
-                                </span>
-                                - 11:05
-                              </li>
-                              <li
-                                className={`${styles["result__ticket-option"]}`}
-                              >
-                                <span
-                                  className={
-                                    styles["result__ticket-option-span"]
-                                  }
-                                >
-                                  10:20
-                                </span>
-                                - 12:05
-                              </li>
-                              <li
-                                className={`${styles["result__ticket-option"]}`}
-                              >
-                                <span
-                                  className={
-                                    styles["result__ticket-option-span"]
-                                  }
-                                >
-                                  11:20
-                                </span>
-                                - 13:05
-                              </li>
-                            </ul>
-                          )}
+                          <p className={styles["result__ticket-time-on-way"]}>
+                            В пути{" "}
+                            {Math.round(
+                              filteredFlightFrom[indexOfFlightFrom].flightTime /
+                                60
+                            )}{" "}
+                            ч{" "}
+                            {filteredFlightFrom[indexOfFlightFrom].flightTime %
+                              60 >
+                              0 &&
+                              `${
+                                filteredFlightFrom[indexOfFlightFrom]
+                                  .flightTime % 60
+                              } мин`}
+                          </p>
                         </div>
+                        <div
+                          className={styles["result__ticket-time-container"]}
+                        >
+                          <p className={styles["result__ticket-time"]}>
+                            {
+                              filteredFlightFrom[indexOfFlightFrom]
+                                .finishFlightTime
+                            }
+                          </p>
+                          <p className={styles["result__ticket-date"]}>
+                            <span
+                              className={styles["result__ticket-date-span"]}
+                            >
+                              {filteredFlightFrom[indexOfFlightFrom].toCity}
+                            </span>
+                            <br />
+                            {
+                              filteredFlightFrom[indexOfFlightFrom]
+                                .finishFlightDate
+                            }
+                          </p>
+                        </div>
+                        <img
+                          className={styles["result__ticket-luggage-image"]}
+                          src="./images/luggage.svg"
+                          alt="Багаж"
+                        />
+                      </div>
+                      {filteredFlightFrom && filteredFlightFrom.length > 1 && (
+                        <ul
+                          className={styles["result__ticket-options-container"]}
+                        >
+                          {filteredFlightFrom.map((item, index) => {
+                            return (
+                              <li
+                                key={item.id}
+                                onClick={() => setIndexOfFlightFrom(index)}
+                                className={`${
+                                  styles["result__ticket-option"]
+                                } ${
+                                  indexOfFlightFrom === index &&
+                                  styles["result__ticket-option_active"]
+                                }`}
+                              >
+                                <span
+                                  className={
+                                    styles["result__ticket-option-span"]
+                                  }
+                                >
+                                  {item.startFlightTime}
+                                </span>
+                                - {item.finishFlightTime}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+              {isBrowser && dateTo !== "" && filteredFlightTo && (
+                <div
+                  className={`${styles["result__ticket-container"]} ${styles["result__ticket-container_comeback"]}`}
+                >
+                  <div className={styles["result__ticket-main-container"]}>
+                    <div
+                      className={
+                        styles["result__ticket-avia-company-container"]
+                      }
+                    >
+                      <div
+                        className={`${styles["result__ticket-avia-refund-container"]} ${styles["result__ticket-avia-refund-container_comeback"]}`}
+                      >
+                        <p className={styles["result__ticket-avia-refund"]}>
+                          Невозвратный
+                        </p>
+                      </div>
+                      <div className={styles["result__ticket-avia-company"]}>
+                        <img
+                          className={
+                            styles["result__ticket-avia-company-image"]
+                          }
+                          src="./images/s7.png"
+                          alt="Авиокомпания S7"
+                        />
+                        <p
+                          className={styles["result__ticket-avia-company-name"]}
+                        >
+                          S7 Airlines
+                        </p>
                       </div>
                     </div>
-                  );
-                })}
+                    <div
+                      className={`${styles["result__info"]} ${
+                        filteredFlightTo &&
+                        filteredFlightTo.length > 1 &&
+                        styles["result__info_options"]
+                      }`}
+                    >
+                      <div className={styles["result__info-container"]}>
+                        <div
+                          className={styles["result__ticket-time-container"]}
+                        >
+                          <p className={styles["result__ticket-time"]}>
+                            {filteredFlightTo[indexOfFlightTo].startFlightTime}
+                          </p>
+                          <p className={styles["result__ticket-date"]}>
+                            <span
+                              className={styles["result__ticket-date-span"]}
+                            >
+                              {filteredFlightTo[indexOfFlightTo].fromCity}
+                            </span>
+                            <br />
+                            {filteredFlightTo[indexOfFlightTo].startFlightDate}
+                          </p>
+                        </div>
+                        <div
+                          className={
+                            styles["result__ticket-line-main-container"]
+                          }
+                        >
+                          <div
+                            className={styles["result__ticket-line-container"]}
+                          >
+                            <div className={styles["result__ticket-airport"]}>
+                              <p
+                                className={
+                                  styles["result__ticket-airport-name"]
+                                }
+                              >
+                                {filteredFlightTo[indexOfFlightTo].airportFromName}
+                              </p>
+                              <div
+                                className={styles["result__ticket-airport-dot"]}
+                              ></div>
+                            </div>
+                            <div
+                              className={styles["result__ticket-airport-line"]}
+                            ></div>
+                            <div className={styles["result__ticket-airport"]}>
+                              <p
+                                className={
+                                  styles["result__ticket-airport-name"]
+                                }
+                              >
+                                {filteredFlightTo[indexOfFlightTo].airportToName}
+                              </p>
+                              <div
+                                className={styles["result__ticket-airport-dot"]}
+                              ></div>
+                            </div>
+                          </div>
+                          <p className={styles["result__ticket-time-on-way"]}>
+                            В пути {Math.round(filteredFlightTo[indexOfFlightTo].flightTime / 60)} ч{" "}
+                            {filteredFlightTo[indexOfFlightTo].flightTime % 60 > 0 &&
+                              `${filteredFlightTo[indexOfFlightTo].flightTime % 60} мин`}
+                          </p>
+                        </div>
+                        <div
+                          className={styles["result__ticket-time-container"]}
+                        >
+                          <p className={styles["result__ticket-time"]}>
+                            {filteredFlightTo[indexOfFlightTo].finishFlightTime}
+                          </p>
+                          <p className={styles["result__ticket-date"]}>
+                            <span
+                              className={styles["result__ticket-date-span"]}
+                            >
+                              {filteredFlightTo[indexOfFlightTo].toCity}
+                            </span>
+                            <br />
+                            {filteredFlightTo[indexOfFlightTo].finishFlightDate}
+                          </p>
+                        </div>
+                        <img
+                          className={styles["result__ticket-luggage-image"]}
+                          src="./images/luggage.svg"
+                          alt="Багаж"
+                        />
+                      </div>
+                      {filteredFlightTo && filteredFlightTo.length > 1 && (
+                        <ul
+                          className={styles["result__ticket-options-container"]}
+                        >
+                          {filteredFlightTo.map((item, index) => {
+                            return (
+                              <li
+                                key={item.id}
+                                onClick={() => setIndexOfFlightTo(index)}
+                                className={`${
+                                  styles["result__ticket-option"]
+                                } ${
+                                  indexOfFlightTo === index &&
+                                  styles["result__ticket-option_active"]
+                                }`}
+                              >
+                                <span
+                                  className={
+                                    styles["result__ticket-option-span"]
+                                  }
+                                >
+                                  {item.startFlightTime}
+                                </span>
+                                - {item.finishFlightTime}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
             <div className={styles["result__ticket-price-container"]}>
               <p className={styles["result__ticket-price"]}>

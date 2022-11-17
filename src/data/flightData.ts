@@ -64,6 +64,32 @@ const flightData = [
     flightTime: 80,
     price: '5120'
   },
+  {
+    id: 5,
+    fromCity: 'Москва', 
+    toCity: 'Ростов на Дону',
+    airportFromName: 'SVO',
+    airportToName: 'ROV',
+    startFlightTime: '10:20',
+    startFlightDate: '29.11.2022',
+    finishFlightTime: '12:00',
+    finishFlightDate: '29.11.2022',
+    flightTime: 80,
+    price: '5120'
+  },
+  {
+    id: 6,
+    fromCity: 'Москва', 
+    toCity: 'Ростов на Дону',
+    airportFromName: 'SVO',
+    airportToName: 'ROV',
+    startFlightTime: '12:20',
+    startFlightDate: '29.11.2022',
+    finishFlightTime: '14:30',
+    finishFlightDate: '29.11.2022',
+    flightTime: 110,
+    price: '6010'
+  },
 ]
 
 export default flightData;
